@@ -37,6 +37,7 @@ public:
 		Del( );
 	}
 
+	// RowSize is count of rows in matrix !
 	halg::uint RowSize( ) const
 	{
 		return m_rowSize;
@@ -182,7 +183,7 @@ private:
 	}
 private:
 	T ** m_data;
-	halg::uint m_rowSize;
+	halg::uint m_rowSize;// RowSize is count of rows in matrix !
 	halg::uint m_colSize;
 
 	T * m_rowColBuff;
