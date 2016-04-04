@@ -2,6 +2,7 @@
 
 #include <cmath>
 #include <string>
+#include <map>
 #include <unordered_map>
 
 namespace halg
@@ -20,12 +21,12 @@ namespace halg
 			, m_right( 0 )
 		{ }
 		Interval( double left, double right )
-			: m_left( left)
-			, m_right( right)
+			: m_left( left )
+			, m_right( right )
 		{ }
 		Interval( Interval const & src )
-			: m_left( src.left )
-			, m_right( src.right )
+			: m_left( src.m_left )
+			, m_right( src.m_right )
 		{ }
 
 		double Left( ) const
@@ -52,7 +53,7 @@ namespace halg
 			if (m_left <= right.m_right)
 			{
 				if ( m_left != right.m_left ) return true;
-				else return length( ) < right.length( );
+				else return Length( ) < right.Length( );
 			}
 			return false;
 		}
