@@ -1,6 +1,7 @@
 #pragma once
 
 #include <cstdint>
+#include <cmath>
 #include <exception>
 
 namespace halg
@@ -15,6 +16,8 @@ namespace halg
 		else
 			return val2;
 	}
+
+	bool IsInt( double val, double eps = 0.000001 );
 
 	class SizeMismatch : public std::exception
 	{
