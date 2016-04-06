@@ -6,23 +6,24 @@ std::map< double, double > halg::Euler(
 		std::string const & dVarName,
 		halg::Interval const & interval,
 		double initArg, double initVal,
-		halg::uint stepsCount
+		halg::uint frequency
 	)
 {
 	std::map< double, double > interpol;
 	interpol[initArg] = initVal;
 
-	double step = interval.Length() / stepsCount;
-	for( halg::uint i = 0; i < stepsCount; ++i )
+	double step = interval.Length() / frequency;
+	for( halg::uint i = 0; i < frequency; ++i )
 	{
 		double prevArg = interpol.rbegin()->first;
 		double prevVal = interpol.rbegin()->second;
-		interpol[prevArg + step] =
-				prevVal +
-				step * func->Value(
-							{ { dFuncName, prevVal },
-							  { dVarName, prevArg } }
-					   );
+
+		double f = func->Value( {{ dFuncName, prevVal },
+								 { dVarName, prevArg }} );
+		double newArg = prevArg + step;
+		double newVal = prevVal + step * f;
+
+		interpol[newArg] = newVal;
 	}
 	return interpol;
 }

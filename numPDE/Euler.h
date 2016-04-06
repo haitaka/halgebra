@@ -18,6 +18,6 @@ namespace halg
 			std::string const & dVarName,
 			halg::Interval const & interval,
 			double initArg, double initVal,
-			halg::uint stepsCount
+			halg::uint frequency
 		);
 }

@@ -22,7 +22,9 @@ SOURCES += \
     Ploter/Axis.cpp \
     Ploter/Ploter.cpp \
     Utils.cpp \
-    numPDE/RungeKutta.cpp
+    numPDE/RungeKutta.cpp \
+    numeth/Integr.cpp \
+    ReportTools/TextTable.cpp
 
 HEADERS += \
     MatrixColRow.h \
@@ -38,7 +40,9 @@ HEADERS += \
     Ploter/Axis.h \
     Ploter/Plot.h \
     Ploter/Ploter.h \
-    numPDE/RungeKutta.h
+    numPDE/RungeKutta.h \
+    numeth/Integr.h \
+    ReportTools/TextTable.h
 
 unix {
     target.path = /usr/lib

@@ -62,7 +62,7 @@ halg::Function * halg::Neg::Derivative( std::string var ) const
 }
 halg::Function * halg::Neg::Copy( ) const
 {
-	return new halg::Neg( m_arg );
+	return new halg::Neg( m_arg->Copy( ) );
 }
 bool halg::Neg::IsConst( ) const
 {
@@ -91,7 +91,8 @@ halg::Function * halg::Sum::Derivative( std::string var ) const
 }
 halg::Function * halg::Sum::Copy( ) const
 {
-	return new halg::Sum( m_left, m_right );
+	return new halg::Sum( m_left->Copy( ),
+						  m_right->Copy( ) );
 }
 bool halg::Sum::IsConst( ) const
 {
@@ -121,7 +122,8 @@ halg::Function * halg::Diff::Derivative( std::string var ) const
 }
 halg::Function * halg::Diff::Copy( ) const
 {
-	return new halg::Diff( m_left, m_right );
+	return new halg::Diff( m_left->Copy( ),
+						   m_right->Copy( ) );
 }
 bool halg::Diff::IsConst( ) const
 {
@@ -159,7 +161,8 @@ halg::Function * halg::Comp::Derivative( std::string var ) const
 }
 halg::Function * halg::Comp::Copy( ) const
 {
-	return new halg::Comp( m_left, m_right );
+	return new halg::Comp( m_left->Copy( ),
+						   m_right->Copy( ) );
 }
 bool halg::Comp::IsConst( ) const
 {
@@ -203,7 +206,8 @@ halg::Function * halg::Div::Derivative( std::string var ) const
 }
 halg::Function * halg::Div::Copy( ) const
 {
-	return new halg::Div( m_left, m_right );
+	return new halg::Div( m_left->Copy( ),
+						  m_right->Copy( ) );
 }
 bool halg::Div::IsConst( ) const
 {
@@ -274,7 +278,8 @@ halg::Function * halg::Pow::Derivative( std::string var ) const
 }
 halg::Function * halg::Pow::Copy( ) const
 {
-	return new halg::Pow( m_base, m_exp );
+	return new halg::Pow( m_base->Copy( ),
+						  m_exp->Copy( ) );
 }
 bool halg::Pow::IsConst( ) const
 {
@@ -300,7 +305,7 @@ halg::Function * halg::Log::Derivative( std::string var ) const
 }
 halg::Function * halg::Log::Copy( ) const
 {
-	return new halg::Log( m_arg );
+	return new halg::Log( m_arg->Copy( ) );
 }
 bool halg::Log::IsConst( ) const
 {
@@ -326,7 +331,7 @@ halg::Function * halg::Sin::Derivative( std::string var ) const
 }
 halg::Function * halg::Sin::Copy( ) const
 {
-	return new halg::Sin( m_arg );
+	return new halg::Sin( m_arg->Copy( ) );
 }
 bool halg::Sin::IsConst( ) const
 {
@@ -354,7 +359,7 @@ halg::Function * halg::Cos::Derivative( std::string var ) const
 }
 halg::Function * halg::Cos::Copy( ) const
 {
-	return new halg::Cos( m_arg );
+	return new halg::Cos( m_arg->Copy( ) );
 }
 bool halg::Cos::IsConst( ) const
 {

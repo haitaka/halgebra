@@ -12,12 +12,13 @@
 
 namespace halg
 {
-	std::map< double, double > Euler(
+	std::map< double, double > RungeKutta(
 			halg::Function const * func,
 			std::string const & dFuncName,
 			std::string const & dVarName,
 			halg::Interval const & interval,
 			double initArg, double initVal,
-			halg::uint stepsCount
+			halg::uint frequency,
+			double aParam
 		);
 }

@@ -19,9 +19,10 @@ public:
 	virtual Function * Derivative( std::string var ) const = 0;
 	virtual Function * Copy( ) const = 0;
 	virtual bool IsConst( ) const = 0;
-	friend std::ostream &
-		operator << ( std::ostream & ioStream,
-					  Function const * func )
+	friend std::ostream & operator << (
+			std::ostream & ioStream,
+			Function const * func
+		)
 	{
 		ioStream << std::string( *func );
 		return ioStream;

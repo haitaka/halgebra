@@ -2,6 +2,7 @@
 
 #include <cmath>
 #include <string>
+#include <sstream>
 #include <map>
 #include <unordered_map>
 
@@ -43,10 +44,25 @@ namespace halg
 		}
 		double Mid( ) const
 		{
-			return ( m_right + m_right ) / 2;
+			return ( m_left + m_right ) / 2;
 		}
 
-		//operator std::string ( ) const;
+		operator std::string ( ) const
+		{
+			std::stringstream formatStr;
+			formatStr << "(" << m_left << "; "
+							 << m_right << ")";
+			return formatStr.str( );
+		}
+
+		friend std::ostream & operator << (
+				std::ostream & ioStream,
+				Interval const & self
+			)
+		{
+			ioStream << std::string( self );
+			return ioStream;
+		}
 
 		bool operator < ( Interval const & right ) const
 		{

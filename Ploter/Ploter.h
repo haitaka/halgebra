@@ -21,7 +21,8 @@ class Ploter : public QWidget
 public:
 	Ploter( double xMin, double xMax,
 			double yMin, double yMax,
-			QColor const & axisColor )
+			QColor const & axisColor,
+			std::string const & winName = "Ploter" )
 		: QWidget( nullptr )
 		, m_xMin( xMin )
 		, m_xMax( xMax )
@@ -29,7 +30,7 @@ public:
 		, m_yMax( yMax )
 		, m_axis( *this, axisColor, this )
 	{
-		setWindowTitle( tr( "Ploter" ) );
+		setWindowTitle( QString::fromStdString( winName ) );
 		resize( QSize( 640, 480 ) );
 	}
 
@@ -81,8 +82,10 @@ public:
 	AnimPloter( double xMin, double xMax,
 				double yMin, double yMax,
 				QColor axisColor,
-				halg::uint delay )
-		: Ploter( xMin, xMax, yMin, yMax, axisColor )
+				halg::uint delay,
+				std::string const & winName = "Ploter" )
+		: Ploter( xMin, xMax, yMin, yMax,
+				  axisColor, winName )
 		, m_timer( this )
 	{
 		connect( &m_timer, SIGNAL( timeout( ) ),

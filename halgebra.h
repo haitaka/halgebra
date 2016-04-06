@@ -6,3 +6,5 @@
 #include "Function.h"
 #include "Ploter/Ploter.h"
 #include "numPDE/NumPDE.h"
+#include "ReportTools/TextTable.h"
+#include "numeth/Integr.h"
