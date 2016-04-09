@@ -31,3 +31,29 @@ double halg::SimpsonRule::operator () (
 			 ( f_a + 4 * f_mid + f_b ) / 6 );
 }
 
+double halg::MonteCarloIntegr( halg::Function const * func,
+                               std::string const & varName,
+                               halg::Interval const & interval,
+                               halg::uint frequency )
+{
+    /*double result = 0;
+    for( halg::uint i = 0; i < frequency; ++i )
+    {
+        double x = halg::RandDouble( interval.Left( ),
+                                     interval.Right( ) );
+        double y = func->Value( {{ varName, x }} );
+        result += y;
+    }*/
+
+    double step = interval.Length( ) / frequency;
+    double result = 0;
+    for( double left = interval.Left(),
+                right = left + step;
+         right <= interval.Right( ) + step/2;
+         left = right, right += step )
+    {
+        result += func->Value( {{ varName, left }} );
+    }
+
+    return result / frequency;
+}

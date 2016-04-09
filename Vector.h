@@ -15,7 +15,7 @@ public:
 	Vector( const Vector & src )
 		: Matrix( src )
 	{}
-	Vector( const Matrix & srcMatrix )
+Vector( const Matrix & srcMatrix )
 		: Matrix( srcMatrix.RowSize( ), 1 )
 	{
 		for( halg::uint id = 0; id < Size( ); ++id )

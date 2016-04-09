@@ -51,4 +51,8 @@ namespace halg
 		}
 		return result;
 	}
+    double MonteCarloIntegr( halg::Function const * func,
+                             std::string const & varName,
+                             halg::Interval const & interval,
+                             halg::uint frequency );
 }

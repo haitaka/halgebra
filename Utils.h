@@ -3,6 +3,7 @@
 #include <cstdint>
 #include <cmath>
 #include <exception>
+#include <stdlib.h>
 
 namespace halg
 {
@@ -18,6 +19,8 @@ namespace halg
 	}
 
 	bool IsInt( double val, double eps = 0.000001 );
+
+    double RandDouble( double min, double max );
 
 	class SizeMismatch : public std::exception
 	{

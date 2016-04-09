@@ -17,14 +17,14 @@ QMAKE_CXXFLAGS += -pedantic
 
 SOURCES += \
     Function.cpp \
-    numPDE/Adams.cpp \
     numPDE/Euler.cpp \
     Ploter/Axis.cpp \
     Ploter/Ploter.cpp \
     Utils.cpp \
     numPDE/RungeKutta.cpp \
     numeth/Integr.cpp \
-    ReportTools/TextTable.cpp
+    ReportTools/TextTable.cpp \
+    Utils.cpp
 
 HEADERS += \
     MatrixColRow.h \
@@ -34,7 +34,6 @@ HEADERS += \
     Function.h \
     Halgebra.h \
     Vector.h \
-    numPDE/Adams.h \
     numPDE/Euler.h \
     numPDE/NumPDE.h \
     Ploter/Axis.h \
@@ -42,7 +41,10 @@ HEADERS += \
     Ploter/Ploter.h \
     numPDE/RungeKutta.h \
     numeth/Integr.h \
-    ReportTools/TextTable.h
+    ReportTools/TextTable.h \
+    VectorFunc.h \
+    numPDE/adams.h \
+    numPDE/Adams.h
 
 unix {
     target.path = /usr/lib
