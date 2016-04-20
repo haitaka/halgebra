@@ -10,31 +10,31 @@ class Vector : public halg::Matrix< T >
 {
 public:
 	Vector( halg::uint size )
-		: Matrix( size, 1 )
+        : Matrix< T >( size, 1 )
 	{}
 	Vector( const Vector & src )
-		: Matrix( src )
+        : Matrix< T >( src )
 	{}
-Vector( const Matrix & srcMatrix )
-		: Matrix( srcMatrix.RowSize( ), 1 )
+    Vector( const Matrix< T > & srcMatrix )
+        : Matrix< T >( srcMatrix.RowSize( ), 1 )
 	{
 		for( halg::uint id = 0; id < Size( ); ++id )
 		{
-			(*this)[i] = srcMatrix[id][0];
+            (*this)[id] = srcMatrix[id][0];
 		}
 	}
 	halg::uint Size() const
 	{
-		return RowSize();
+        return Matrix< T >::RowSize();
 	}
 	T & operator[] ( halg::uint id )
 	{
-		return GetCol( 0 )[id];
-	}
-	T const & operator[] ( halg::uint id ) const
-	{
-		return GetCol( 0 )[id];
-	}
+        return Matrix< T >::Get( id, 0 );
+    }
+    T const & operator[] ( halg::uint id ) const
+    {
+        return Matrix< T >::Get( id, 0 );
+    }
 };
 
 template< typename T >
@@ -47,7 +47,7 @@ T ScalProduct( Vector< T > const & left,
 	}
 
 	T result;
-	for( halg::uint id = 0; id < Size( ); ++id )
+    for( halg::uint id = 0; id < Matrix< T >::Size( ); ++id )
 	{
 		result += left[id] * right[id];
 	}

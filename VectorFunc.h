@@ -5,40 +5,46 @@
 
 namespace halg
 {
-class VectorFunc : public Function , public Vector< Function * >
+class VectorFunc : public Vector< Function * >
 {
-    Vector< double > Value( halg::VarVals const & args) const override
+    VectorFunc( halg::uint size )
+        : Vector( size )
+    { }
+    VectorFunc( const Vector< Function * > & src )
+        : Vector( src )
+    { }
+    Vector< double > Value( halg::VarVals const & args) const
     {
         Vector< double > result( Size( ) );
         for( halg::uint id = 0; id < Size( ); ++id )
         {
-            reuslt[ id ] = (*this)[ id ]->Value( args );
+            result[ id ] = (*this)[ id ]->Value( args );
         }
         return result;
     }
-    operator std::string( ) const override
+    operator std::string( ) const
     {
         return "TODO";
     }
-    VectorFunc Derivative( std::string const & varName ) const override
+    VectorFunc Derivative( std::string const & varName ) const
     {
-        Vector< double > result( Size( ) );
+        VectorFunc result( Size( ) );
         for( halg::uint id = 0; id < Size( ); ++id )
         {
-            reuslt[ id ] = (*this)[ id ]->Derivative( varName );
+            result[ id ] = (*this)[ id ]->Derivative( varName );
         }
         return result;
     }
-    VectorFunc Copy( ) const override
+    VectorFunc Copy( ) const
     {
-        Vector< double > result( Size( ) );
+        VectorFunc result( Size( ) );
         for( halg::uint id = 0; id < Size( ); ++id )
         {
-            reuslt[ id ] = (*this)[ id ]->Copy( );
+            result[ id ] = (*this)[ id ]->Copy( );
         }
         return result;
     }
-    bool IsConst( ) const override
+    bool IsConst( ) const
     {
         for( halg::uint id = 0; id < Size( ); ++id )
         {

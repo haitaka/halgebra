@@ -26,8 +26,8 @@ public:
 		Init( );
 	}
 	Matrix( Matrix const & src )
-		: m_rowSize( src.rowSize )
-		, m_colSize( src.colSize )
+        : m_rowSize( src.m_rowSize )
+        , m_colSize( src.m_colSize )
 		, m_data( nullptr )
 	{
 		*this = src;
@@ -73,15 +73,7 @@ public:
 	MatrixCol< T > GetCol( halg::uint colId )
 	{
 		return MatrixCol< T >( *this, colId );
-	}
-	MatrixRow< T > const GetRow( halg::uint rowId ) const
-	{
-		return MatrixRow< T >( *this, rowId );
-	}
-	MatrixCol< T > const GetCol( halg::uint colId ) const
-	{
-		return MatrixCol< T >( *this, colId );
-	}
+    }
 
 	Matrix operator + ( Matrix const & right );
 	Matrix operator - ( Matrix const & right );
@@ -182,9 +174,9 @@ private:
 		delete m_rowColBuff;
 	}
 private:
-	T ** m_data;
 	halg::uint m_rowSize;// RowSize is count of rows in matrix !
 	halg::uint m_colSize;
+    T ** m_data;
 
 	T * m_rowColBuff;
 };

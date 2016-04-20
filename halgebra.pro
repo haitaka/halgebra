@@ -24,7 +24,8 @@ SOURCES += \
     numPDE/RungeKutta.cpp \
     numeth/Integr.cpp \
     ReportTools/TextTable.cpp \
-    Utils.cpp
+    Utils.cpp \
+    numPDE/Adams.cpp
 
 HEADERS += \
     MatrixColRow.h \
@@ -43,7 +44,7 @@ HEADERS += \
     numeth/Integr.h \
     ReportTools/TextTable.h \
     VectorFunc.h \
-    numPDE/adams.h \
+    numPDE/Adams.h \
     numPDE/Adams.h
 
 unix {
