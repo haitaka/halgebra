@@ -39,13 +39,7 @@ Givens::QR_Decomp Givens::QR(Matrix & A)
 
 void Givens::rotateT(Lin_System & sys, int k, int l, double angle)
 {
-	for (int j = 0; j < sys.A.col_order(); j++) {
-		double tmp_kj = sys.A[k][j] * cos(angle) - sys.A[l][j] * sin(angle);
-		double tmp_lj = sys.A[k][j] * sin(angle) + sys.A[l][j] * cos(angle);
-
-		sys.A[k][j] = tmp_kj;
-		sys.A[l][j] = tmp_lj;
-	}
+	Givens::rotateT(sys.A, k, l, angle);
 
 	double tmp_i = sys.b[k] * cos(angle) - sys.b[l] * sin(angle);
 	double tmp_j = sys.b[k] * sin(angle) + sys.b[l] * cos(angle);
@@ -56,8 +50,8 @@ void Givens::rotateT(Lin_System & sys, int k, int l, double angle)
 void Givens::rotateT(Matrix & A, int k, int l, double angle)
 {
 	for (int j = 0; j < A.col_order(); j++) {
-		double tmp_kj = A[k][j] *    cos(angle) + A[l][j] * sin(angle);
-		double tmp_lj = A[k][j] * (-sin(angle)) + A[l][j] * cos(angle);
+		double tmp_kj = A[k][j] * cos(angle) - A[l][j] * sin(angle);
+		double tmp_lj = A[k][j] * sin(angle) + A[l][j] * cos(angle);
 
 		A[k][j] = tmp_kj;
 		A[l][j] = tmp_lj;
